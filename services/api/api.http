@@ -1,0 +1,46 @@
+#install rest client extension VSCode
+
+@host = http://localhost:3000
+
+@baseUrl = {{host}}/api/v1
+
+@contentType = application/json 
+
+###
+GET {{host}}
+Content-Type: {{contentType}}
+
+###
+GET {{host}}/healthCheck
+Content-Type: {{contentType}}
+
+###
+POST {{baseUrl}}/todos
+Content-Type: {{contentType}}
+
+{
+    "task": "New task created",
+    "description": "Description from new task"
+}
+
+###
+GET {{baseUrl}}/todos?limit=5
+Content-Type: {{contentType}}
+
+###
+GET {{baseUrl}}/todos/233070bd-4e72-4f9e-a81a-ad0aa41738cc
+Content-Type: {{contentType}}
+
+###
+PATCH  {{baseUrl}}/todos/233070bd-4e72-4f9e-a81a-ad0aa41738cc
+Content-Type: {{contentType}}
+
+{
+    "task": "Updated task",
+    "description": "Description from updated task",
+    "idDone":true
+}
+
+###
+DELETE   {{baseUrl}}/todos/233070bd-4e72-4f9e-a81a-ad0aa41738cc
+Content-Type: {{contentType}}

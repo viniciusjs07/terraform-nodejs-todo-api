@@ -1,0 +1,3 @@
+*.exe
+
+terraform/00-remote-state/.terraform/
