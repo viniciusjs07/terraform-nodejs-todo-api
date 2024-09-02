@@ -41,10 +41,16 @@ Serviços criados na AWS:
       - rodar o comando: terraform init -backend=true -backend-config="config/dev/backend.hcl"
       - rodar: terraform validate
       - rodar: terraform plan
-  # Configuração da VPC 
+  # Criando VPC e Internet Gateway 
    - Criando arquivo [network.tf] para configurar o recurso da vpc
    -migrate-state
    - Rodar: terraform init -backend=true -backend-config="config/dev/backend.hcl"
    - Caso ocorre error, rodar: terraform init -migrate-state -backend=true -backend-config="config/dev/backend.hcl"
    - terraform plan
+  # Criando Subnet
+    - Dentro do arquio [network.tf] é inserido a subnet privada e publica com suas respectivas variáveis de ambiente.
+    - comandos: terraform plan (dentro da pasta 01-network)
+    - terraform validate
+    - terraform apply -auto-approve
+
 

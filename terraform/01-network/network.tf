@@ -17,3 +17,31 @@ resource "aws_internet_gateway" "this" {
   }
 
 }
+
+resource "aws_subnet" "private" {
+    count = var.network.az_count
+    # cidrsubnet = function terraform
+    # 8 bits subnet
+    # https://developer.hashicorp.com/terraform/language/functions/cidrsubnet
+    cidr_block = cidrsubnet(aws_vpc.this.cidr_block, 8, count.index)
+    availability_zone = local.selected_availability_zones[count.index]
+    vpc_id =  aws_vpc.this.id
+      tags = {
+      "Name" = "${local.namespaced_department_name}-public-${local.selected_availability_zones[count.index]}"
+  }
+}
+
+
+
+resource "aws_subnet" "public" {
+    count = var.network.az_count
+    # cidrsubnet = function terraform
+    # 8 bits subnet
+    # https://developer.hashicorp.com/terraform/language/functions/cidrsubnet
+    cidr_block = cidrsubnet(aws_vpc.this.cidr_block, 8, var.network.az_count + count.index)
+    availability_zone = local.selected_availability_zones[count.index]
+    vpc_id =  aws_vpc.this.id
+      tags = {
+      "Name" = "${local.namespaced_department_name}-private-${local.selected_availability_zones[count.index]}"
+  }
+}

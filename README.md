@@ -170,3 +170,25 @@ Serviços criados na AWS:
  - VPC : Criado via console aws
  - S3
  - DynamoDB
+
+Estrutura de Pastas do [terraform]:
+  # 00-remote-state (Configruração inicial do estado remoto do terraform)
+  # 01-network (após criar a VPC no console aws deve seguir esses passos)
+    - criar pasta: [config/dev/backend.hcl] (hashcorp) configuração do seu bucket s3, region, profile e seu dynamodb aqui
+    - Segue o arquivo backend-example para copiar e colar no seu arquivo backend.hcl e preencher com seus dados.
+    - Após configurar o network com o arquivo backend.hcl:
+      - Ir na pasta via terminal em 01-network
+      - rodar o comando: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+      - rodar: terraform validate
+      - rodar: terraform plan
+  # Criando VPC e Internet Gateway 
+   - Criando arquivo [network.tf] para configurar o recurso da vpc
+   -migrate-state
+   - Rodar: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+   - Caso ocorre error, rodar: terraform init -migrate-state -backend=true -backend-config="config/dev/backend.hcl"
+   - terraform plan
+  # Criando Subnet
+    - Dentro do arquio [network.tf] é inserido a subnet privada e publica com suas respectivas variáveis de ambiente.
+    - comandos: terraform plan (dentro da pasta 01-network)
+    - terraform validate
+    - terraform apply -auto-approve
