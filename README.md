@@ -192,3 +192,13 @@ Estrutura de Pastas do [terraform]:
     - comandos: terraform plan (dentro da pasta 01-network)
     - terraform validate
     - terraform apply -auto-approve
+    
+  # Configurando router tables VPC
+   - Precisamos configurar no arquivo [network.tf] as tabelas de rotas da AWS VPC para identificar quais rotas serão public e quais serão privadas
+   - Criando aws_route = internet access
+   - Criando aws_route_table public e inserindo a rota com o aws_internet_gateway
+   - Criando aws_route_table privada sem a rota com o aws_internet_gateway
+   - Criando aws_route_table_association publica e privada com a integração do aws_route_table e aws_subnet
+   - Comandos: terraform plan (dentro da pasta 01-network)
+   - terraform validate
+   - terraform apply -auto-approve
