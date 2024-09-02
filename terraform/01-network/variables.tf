@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 variable "environment" {
-   description = "Deployment environment name, sucj as 'dev', 'test', 'prod'. This categorizes the Network resources by their usage stage"
+   description = "Deployment environment name, such as 'dev', 'test', 'prod'. This categorizes the Network resources by their usage stage"
    type = string
    default = "dev"
 }

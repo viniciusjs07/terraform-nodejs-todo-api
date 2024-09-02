@@ -10,7 +10,7 @@ provider "aws" {
       CreatedAt = "2024-08-29"
       ManagedBy = "Terraform"
       Owner = "Vinicius Silva"
-      Repository = ""
+      Repository = "https://github.com/viniciusjs07/terraform-nodejs-todo-api"
     }
   }
 }

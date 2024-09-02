@@ -149,7 +149,7 @@ Requisitos:
  
 
 Criação dos serviços iniciais na aws que são necessários para inserir o remote state (estado remoto) do terraform.
-Os serviços iniciais para o remote state incluem:
+Os serviços iniciais para o remote state que está na pasta [/00-remote-state] incluem:
  - dynamodb.tf (tabela dynamodb aws) para armazenar o lock do remote state
  - providers.tf (configurações da aws)
  - s3.tf (bucket aws s3)

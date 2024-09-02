@@ -6,6 +6,6 @@ locals {
       ManagedBy = "Terraform"
       Owner = "Vinicius Silva"
       Env = var.environment
-      Repository = "",
+      Repository = "https://github.com/viniciusjs07/terraform-nodejs-todo-api",
   }
 }

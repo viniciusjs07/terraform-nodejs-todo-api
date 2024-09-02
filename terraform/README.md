@@ -9,7 +9,7 @@ Requisitos:
  
 
 Criação dos serviços iniciais na aws que são necessários para inserir o remote state (estado remoto) do terraform.
-Os serviços iniciais para o remote state incluem:
+Os serviços iniciais para o remote state que está na pasta [/00-remote-state] incluem:
  - dynamodb.tf (tabela dynamodb aws) para armazenar o lock do remote state
  - providers.tf (configurações da aws)
  - s3.tf (bucket aws s3)
@@ -30,3 +30,16 @@ Serviços criados na AWS:
  - VPC : Criado via console aws
  - S3
  - DynamoDB
+
+ Estrutura de Pastas do [terraform]:
+  # 00-remote-state (Configruração inicial do estado remoto do terraform)
+  # 01-network (após criar a VPC no console aws deve seguir esses passos)
+    - criar pasta: [config/dev/backend.hcl] (hashcorp) configuração do seu bucket s3, region, profile e seu dynamodb aqui
+    - Segue o arquivo backend-example para copiar e colar no seu arquivo backend.hcl e preencher com seus dados.
+    - Após configurar o network com o arquivo backend.hcl:
+      - Ir na pasta via terminal em 01-network
+      - rodar o comando: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+      - rodar: terraform validate
+      - rodar: terraform plan
+  # Configuração da VPC 
+

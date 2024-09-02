@@ -7,4 +7,8 @@ terraform {
         version = "~> 5.50"
       }
     }
+
+# backend see path /config/dev/backend.tf
+    backend "s3" { 
+    }
 }
