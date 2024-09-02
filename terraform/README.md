@@ -42,4 +42,9 @@ Serviços criados na AWS:
       - rodar: terraform validate
       - rodar: terraform plan
   # Configuração da VPC 
+   - Criando arquivo [network.tf] para configurar o recurso da vpc
+   -migrate-state
+   - Rodar: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+   - Caso ocorre error, rodar: terraform init -migrate-state -backend=true -backend-config="config/dev/backend.hcl"
+   - terraform plan
 
