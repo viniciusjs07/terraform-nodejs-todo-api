@@ -68,32 +68,32 @@ resource "aws_ecs_task_definition" "this" {
   }])
 }
 
-# resource "aws_ecs_service" "this" {
-#   name                              = "${local.namespaced_service_name}-service"
-#   cluster                           = aws_ecs_cluster.this.id
-#   task_definition                   = aws_ecs_task_definition.this.arn
-#   desired_count                     = var.ecs.app_count
-#   launch_type                       = "FARGATE"
-#   health_check_grace_period_seconds = 30
+resource "aws_ecs_service" "this" {
+  name                              = "${local.namespaced_service_name}-service"
+  cluster                           = aws_ecs_cluster.this.id
+  task_definition                   = aws_ecs_task_definition.this.arn
+  desired_count                     = var.ecs.app_count
+  launch_type                       = "FARGATE"
+  health_check_grace_period_seconds = 30
 
-#   network_configuration {
-#     subnets          = local.subnets.private.id
-#     security_groups  = [aws_security_group.ecs_tasks.id]
-#     assign_public_ip = false
-#   }
+  network_configuration {
+    subnets          = local.subnets.private.id
+    security_groups  = [aws_security_group.ecs_tasks.id]
+    assign_public_ip = false
+  }
 
-#   load_balancer {
-#     target_group_arn = aws_alb_target_group.this.id
-#     container_name   = local.container_name
-#     container_port   = var.ecs.app_port
-#   }
+  load_balancer {
+    target_group_arn = aws_alb_target_group.this.id
+    container_name   = local.container_name
+    container_port   = var.ecs.app_port
+  }
 
-#   depends_on = [
-#     aws_alb_listener.http
-#   ]
+  depends_on = [
+    aws_alb_listener.http
+  ]
 
-#   # desired_count is ignored as it can change due to autoscaling policy
-#   lifecycle {
-#     ignore_changes = [desired_count]
-#   }
-# }
+  # desired_count is ignored as it can change due to autoscaling policy
+  lifecycle {
+    ignore_changes = [desired_count]
+  }
+}

@@ -20,6 +20,11 @@ locals {
   db_port = data.terraform_remote_state.db.outputs.database_port
   db_pass = jsondecode(data.aws_secretsmanager_secret_version.rds_password.secret_string)["password"]
 
+  # Domain
+  # is_prod_env                          = var.environment == "prod"
+  # has_domain_name                      = var.domain_name != null
+  # create_resource_based_on_domain_name = local.has_domain_name ? 1 : 0
+  # subdomain_name                       = local.has_domain_name ? "${local.is_prod_env ? "" : "${var.environment}."}fargate.${var.domain_name}" : ""
   common_tags = {
     Project    = "AWS ECS Fargate with Terraform"
     Component  = "ECS Fargate"

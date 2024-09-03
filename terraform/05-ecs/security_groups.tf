@@ -29,26 +29,26 @@ resource "aws_security_group" "alb" {
   }
 }
 
-# resource "aws_security_group" "ecs_tasks" {
-#   name        = "${local.namespaced_service_name}-ecs-tasks"
-#   description = "Allows inbound access from the ALB only"
-#   vpc_id      = local.vpc.id
+resource "aws_security_group" "ecs_tasks" {
+  name        = "${local.namespaced_service_name}-ecs-tasks"
+  description = "Allows inbound access from the ALB only"
+  vpc_id      = local.vpc.id
 
-#   ingress {
-#     from_port       = var.ecs.app_port
-#     to_port         = var.ecs.app_port
-#     protocol        = "tcp"
-#     security_groups = [aws_security_group.alb.id]
-#   }
+  ingress {
+    from_port       = var.ecs.app_port
+    to_port         = var.ecs.app_port
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb.id]
+  }
 
-#   egress {
-#     from_port   = 0
-#     to_port     = 0
-#     protocol    = "-1"
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-#   tags = {
-#     Name = "${local.namespaced_service_name}-ecs-tasks"
-#   }
-# }
+  tags = {
+    Name = "${local.namespaced_service_name}-ecs-tasks"
+  }
+}
