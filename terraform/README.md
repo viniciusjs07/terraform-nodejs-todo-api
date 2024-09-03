@@ -63,5 +63,34 @@ Serviços criados na AWS:
    - terraform validate
    - terraform apply -auto-approve
 
+# Configurando VPC endpoint (Network associations)
+   - Precisamos configurar no arquivo [network.tf] o module vpc_endpoints com as routes tables privadas e subnets privadas
+   - Criando path modules/vpc_endpoint com os arquivos [main.tf], [variables.tf] e [outputs.tf]
+    - [main.tf] - recursos aws_security_group, aws_vpc_endpoint para logs, aws_vpc_endpoint ecr_dkr, aws_vpc_endpoint ecr_api e aws_vpc_endpoint s3
+    - [outptus.tf] - criando output para endpoints de endpoint_s3, endpoint_ecr_dkr, endpoint_ecr_api e endpoint_logs (cloudWhatch)
+    - Comandos: 
+      - terraform init -backend=true -backend-config="config/dev/backend.hcl"
+      - terraform validate
+      - terraform plan
+    - Criando arquivo [terraform.tfvars] em 01-network/config/dev/terraform.tfvars
+      - terraform plan -var-file="config/dev/terraform.tfvars"
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
 
+   # Configurando Bastion Host service
+    - Criamos a pasta 02-bastion-host e seus respectivos arquivos.
+    - Criando security group para EC2
+    - plan -var-file="config/dev/terraform.tfvars"
+    - insert your IP Address from ec2 console aws
+    - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+    - insert your IP Address from ec2 console aws
+    - Criamos o security group : express-todos-api=dev
+
+  # Configurando EC2 para o Bastion Host service
+    - Criando recurso aws_instance em [ec2.tf]
+    - Cria um novo par de chave com um nome na ec2 da aws console
+    - Em EC2 na aws console vá em security groups e obtenha seu ip.
+    - terraform init -var-file="config/dev/terraform.tfvars"
+    - terraform validade
+    - terraform plan -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS"
+    - terraform apply -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS" -auto-approve
 

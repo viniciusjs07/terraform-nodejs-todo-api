@@ -2,3 +2,4 @@
 
 terraform/00-remote-state/.terraform/
 terraform/01-network/config/dev/backend.hcl
+terraform/02-bastion-host/config/dev/backend.hcl

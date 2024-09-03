@@ -215,3 +215,22 @@ Estrutura de Pastas do [terraform]:
     - Criando arquivo [terraform.tfvars] em 01-network/config/dev/terraform.tfvars
       - terraform plan -var-file="config/dev/terraform.tfvars"
       - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+
+   # Configurando Bastion Host service
+    - Criamos a diretório 02-bastion-host e seus respectivos arquivos de configuração.
+    - Criando security group para EC2
+    - comando dentro do diretório /02-bastion-host : terraform plan -var-file="config/dev/terraform.tfvars"
+    - insert your IP Address from ec2 console aws
+    - comando: terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+    - insert your IP Address from ec2 console aws
+    - Criamos o security group : express-todos-api=dev
+
+  # Configurando EC2 para o Bastion Host service
+    - Criando recurso aws_instance em [ec2.tf]
+    - Cria um novo par de chave com um nome na ec2 da aws console
+    - Em EC2 na aws console vá em security groups e obtenha seu ip.
+    - terraform init -var-file="config/dev/terraform.tfvars"
+    - terraform validade
+    - terraform plan -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS"
+    - terraform apply -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS" -auto-approve
+    - Ec2 express-todos-api=dev criada com sucesso.
