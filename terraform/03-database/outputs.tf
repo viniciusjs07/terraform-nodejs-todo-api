@@ -26,4 +26,9 @@ output "database_kms_key_arn" {
   value = aws_kms_key.this.arn
 }
 
+output "database_password_secret" {
+  value = aws_rds_cluster.postgresql.master_user_secret
+}
+
+
 

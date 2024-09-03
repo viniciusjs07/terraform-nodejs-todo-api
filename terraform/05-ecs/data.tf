@@ -31,5 +31,14 @@ data "terraform_remote_state" "db" {
   }
 }
 
+data "aws_secretsmanager_secret" "rds_password" {
+  arn = data.terraform_remote_state.db.outputs.database_password_secret[0].secret_arn
+}
+
+data "aws_secretsmanager_secret_version" "rds_password" {
+  secret_id = data.aws_secretsmanager_secret.rds_password.id
+}
+
+
 
 
