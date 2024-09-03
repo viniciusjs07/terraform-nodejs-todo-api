@@ -248,13 +248,17 @@ Estrutura de Pastas do [terraform]:
      - Criação de subnet groups
 
     # Configurando ECR AWS para armazenar imagens do docker
-     - Criando arquivo [rds.tf] dentro do diretório [/03-database]
-     - Criação do RDS database cluster [express-todos-api-dev-cluster]
-     - Criação do RDS instance [express-todos-api-dev]
+     - Comandos: No diretório 04-ecr: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+        - terraform validate
+        - terraform plan -var-file="config/dev/terraform.tfvars"
+     - Criando arquivo [ecr.tf] dentro do diretório [/04-ecr]
      - Criação de subnet groups
      - Comando: terraform plan -var-file="config/dev/terraform.tfvars"
      - terraform validate
      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+     - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+   # Subindo imagens para o ECR AWS
+    - No arquivo [ecr.tf] dentro do diretório [/04-ecr] possui a execução dos passos do docker da aplicação nodejs para realizar a build e subir a imagem da build no ECR AWS
 
 
 
