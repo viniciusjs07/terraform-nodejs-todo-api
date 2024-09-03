@@ -8,6 +8,9 @@ locals {
   vpc = data.terraform_remote_state.network.outputs.vpc
   subnets = data.terraform_remote_state.network.outputs.subnets
   
+  # Database
+  db_name = data.terraform_remote_state.db.outputs.database_name
+
   common_tags = {
     Project    = "AWS ECS Fargate with Terraform"
     Component  = "ECS Fargate"
