@@ -5,3 +5,4 @@ terraform/01-network/config/dev/backend.hcl
 terraform/02-bastion-host/config/dev/backend.hcl
 terraform/03-database/config/dev/backend.hcl
 terraform/04-ecr/config/dev/backend.hcl
+terraform/05-ecs/config/dev/backend.hcl

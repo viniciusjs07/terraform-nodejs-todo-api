@@ -259,6 +259,13 @@ Estrutura de Pastas do [terraform]:
      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
    # Subindo imagens para o ECR AWS
     - No arquivo [ecr.tf] dentro do diretório [/04-ecr] possui a execução dos passos do docker da aplicação nodejs para realizar a build e subir a imagem da build no ECR AWS
+    - Comando: terraform plan -var-file="config/dev/terraform.tfvars"
+      -terraform validate
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+   
+   # Configurando ECS FARGATE AWS
+
 
 
 
