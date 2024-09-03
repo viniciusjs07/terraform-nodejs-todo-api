@@ -86,3 +86,14 @@ resource "aws_route_table_association" "private" {
         subnet_id = aws_subnet.private.*.id[count.index]
   
 }
+
+module "vpc_endpoints" {
+  count = var.create_vpc_endpoint ? 1 : 0
+  source = "./modules/vpc_endpoint"
+  aws_region = var.aws_region
+  cidr_block = aws_vpc.this.cidr_block
+  private_route_table_ids = aws_route_table.private.*.id
+  private_subnet_ids = aws_subnet.private.*.id 
+  vpc_id = aws_vpc.this.id
+  vpc_name = local.namespaced_department_name
+}

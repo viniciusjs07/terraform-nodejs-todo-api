@@ -192,7 +192,7 @@ Estrutura de Pastas do [terraform]:
     - comandos: terraform plan (dentro da pasta 01-network)
     - terraform validate
     - terraform apply -auto-approve
-    
+
   # Configurando router tables VPC
    - Precisamos configurar no arquivo [network.tf] as tabelas de rotas da AWS VPC para identificar quais rotas serão public e quais serão privadas
    - Criando aws_route = internet access
@@ -202,3 +202,16 @@ Estrutura de Pastas do [terraform]:
    - Comandos: terraform plan (dentro da pasta 01-network)
    - terraform validate
    - terraform apply -auto-approve
+   
+   # Configurando VPC endpoint (Network associations)
+   - Precisamos configurar no arquivo [network.tf] o module vpc_endpoints com as routes tables privadas e subnets privadas
+   - Criando path modules/vpc_endpoint com os arquivos [main.tf], [variables.tf] e [outputs.tf]
+    - [main.tf] - recursos aws_security_group, aws_vpc_endpoint para logs, aws_vpc_endpoint ecr_dkr, aws_vpc_endpoint ecr_api e aws_vpc_endpoint s3
+    - [outptus.tf] - criando output para endpoints de endpoint_s3, endpoint_ecr_dkr, endpoint_ecr_api e endpoint_logs (cloudWhatch)
+    - Comandos: 
+      - terraform init -backend=true -backend-config="config/dev/backend.hcl"
+      - terraform validate
+      - terraform plan
+    - Criando arquivo [terraform.tfvars] em 01-network/config/dev/terraform.tfvars
+      - terraform plan -var-file="config/dev/terraform.tfvars"
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
