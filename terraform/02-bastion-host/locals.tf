@@ -1,5 +1,5 @@
 locals {
-  namespaced_service_name = "${var.service_name}=${var.environment}"
+  namespaced_service_name = "${var.service_name}-${var.environment}"
 
   # Network 
   vpc = data.terraform_remote_state.network.outputs.vpc

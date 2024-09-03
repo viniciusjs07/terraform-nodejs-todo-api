@@ -234,3 +234,27 @@ Estrutura de Pastas do [terraform]:
     - terraform plan -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS"
     - terraform apply -var-file="config/dev/terraform.tfvars" -var allowed_id="YOUR_IP_AWS" -var key_name="YOUR_KEY_PAIR_EC2_AWS" -auto-approve
     - Ec2 express-todos-api=dev criada com sucesso.
+
+    # Configurando RDS AWS com Aurora-Postgres
+     - Criamos a diretório 03-database e seus respectivos arquivos de configuração.
+     - Comandos: Ir no diretório 03-database/: terraform init -backend=true -backend-config="config/dev/backend.hcl"
+     - terraform validate
+     - terraform plan -var-file="config/dev/terraform.tfvars"
+    
+    # Configurando Security Group RDS AWS
+     - Criando arquivo [rds.tf] dentro do diretório [/03-database]
+     - Criação do RDS database cluster [express-todos-api-dev-cluster]
+     - Criação do RDS instance [express-todos-api-dev]
+     - Criação de subnet groups
+
+    # Configurando ECR AWS para armazenar imagens do docker
+     - Criando arquivo [rds.tf] dentro do diretório [/03-database]
+     - Criação do RDS database cluster [express-todos-api-dev-cluster]
+     - Criação do RDS instance [express-todos-api-dev]
+     - Criação de subnet groups
+     - Comando: terraform plan -var-file="config/dev/terraform.tfvars"
+     - terraform validate
+     - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+
+
+

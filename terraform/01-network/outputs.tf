@@ -10,11 +10,11 @@ output "subnets" {
     value = {
         private = {
             id = aws_subnet.private.*.id 
-            cidr_block = aws_subnet.private.*.cidr_block
+            cidr_blocks = aws_subnet.private.*.cidr_block
         }
         public = {
              id = aws_subnet.public.*.id 
-             cidr_block = aws_subnet.public.*.cidr_block
+             cidr_blocks = aws_subnet.public.*.cidr_block
         }
     }
   
