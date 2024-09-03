@@ -8,22 +8,26 @@ terraform/00-remote-state/terraform.tfstate.backup
 terraform/01-network/config/dev/backend.hcl
 terraform/01-network/terraform.tfstate
 terraform/01-network/terraform.tfstate.backup
+terraform/01-network/.terraform/terraform.tfstate
 
 terraform/02-bastion-host/config/dev/backend.hcl
 terraform/02-bastion-host/terraform.tfstate
 terraform/02-bastion-host/terraform.tfstate.backup
+terraform/02-bastion-host/.terraform/terraform.tfstate
 
 
 terraform/03-database/config/dev/backend.hcl
 terraform/03-database/terraform.tfstate
 terraform/03-database/terraform.tfstate.backup
+terraform/03-database/.terraform/terraform.tfstate
 
 
 terraform/04-ecr/config/dev/backend.hcl
 terraform/04-ecr/terraform.tfstate
 terraform/04-ecr/terraform.tfstate.backup
-
+terraform/04-ecr/.terraform/terraform.tfstate
 
 terraform/05-ecs/config/dev/backend.hcl
 terraform/05-ecs/terraform.tfstate
 terraform/05-ecs/terraform.tfstate.backup
+terraform/05-ecs/.terraform/terraform.tfstate
