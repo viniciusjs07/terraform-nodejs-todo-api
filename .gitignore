@@ -14,6 +14,7 @@ terraform/02-bastion-host/config/dev/backend.hcl
 terraform/02-bastion-host/terraform.tfstate
 terraform/02-bastion-host/terraform.tfstate.backup
 terraform/02-bastion-host/.terraform/terraform.tfstate
+terraform/02-bastion-host/ssh_tunnel_script.sh
 
 
 terraform/03-database/config/dev/backend.hcl
@@ -31,3 +32,4 @@ terraform/05-ecs/config/dev/backend.hcl
 terraform/05-ecs/terraform.tfstate
 terraform/05-ecs/terraform.tfstate.backup
 terraform/05-ecs/.terraform/terraform.tfstate
+
