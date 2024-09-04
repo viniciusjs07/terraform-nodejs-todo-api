@@ -278,6 +278,13 @@ Estrutura de Pastas do [terraform]:
      - terraform plan -var-file="config/prod/terraform.tfvars"
      - terraform apply -var-file="config/prod/terraform.tfvars" -auto-approve
 
+
+    # Destruir os recursos criados na AWS
+     - Vá na pasta 05-ecs/ e rode o comando terraform destroy -var-file="config/dev/terraform.tfvars" -auto-approve
+     - Vá na pasta 04-ecr e rode o comando o mesmo comando terraform destroy..
+     - Faça isso para as outras pastas 03-database, 02-bastion-host e 01/network.
+
+
    
 
 
