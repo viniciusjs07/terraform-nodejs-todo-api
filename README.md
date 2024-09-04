@@ -264,8 +264,20 @@ Estrutura de Pastas do [terraform]:
       - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
       - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
    
-   # Configurando ECS FARGATE AWS
+   # Configurando ECS FARGAT, CloudWatch, LoadBalancer AWS
+    - No arquivo [ecs.tf] dentro do diretório [/05-ecs] existem todas as configurações da criação dos recursos da ecs, security groups, cloudWatch e load balancer.
+    - Comando dentro da pasta /05-ecs: terraform plan -var-file="config/dev/terraform.tfvars"
+      - terraform validate
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
+      - terraform apply -var-file="config/dev/terraform.tfvars" -auto-approve
 
+    # Exemplo de ambiente de prod
+     - Na pasta 01-network é criado uma pasta prod dentro de .terraform/config e suas configurações de prod podem ser configuradas de acordo com suas necessidades.
+     - Para aplicar as mudanças em produção no path [/01-network]
+     - Comandos: terraform init -backend=true -backend-config="config/prod/backend.hcl" -reconfigure
+     - terraform plan -var-file="config/prod/terraform.tfvars"
+     - terraform apply -var-file="config/prod/terraform.tfvars" -auto-approve
 
+   
 
 

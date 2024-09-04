@@ -9,6 +9,8 @@ terraform/01-network/config/dev/backend.hcl
 terraform/01-network/terraform.tfstate
 terraform/01-network/terraform.tfstate.backup
 terraform/01-network/.terraform/terraform.tfstate
+terraform/01-network/config/prod/backend.hcl
+terraform/01-network/.terraform/terraform.tfstate
 
 terraform/02-bastion-host/config/dev/backend.hcl
 terraform/02-bastion-host/terraform.tfstate
